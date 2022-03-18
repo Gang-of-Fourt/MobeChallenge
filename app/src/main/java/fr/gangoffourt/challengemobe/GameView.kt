@@ -18,7 +18,7 @@ class GameView(context: Context): SurfaceHolder.Callback, SurfaceView(context) {
 
     private var threadGameDraw = ThreadGameDraw(holder, this)
     private var threadWinDelay = ThreadWinDelay(holder,this)
-    private var indexArray = 0..3
+    private var indexArray = 0..4
     private val currentMinigameList = mutableListOf<AbstractMiniGame>()
     private val timeList = mutableListOf<Long>()
     private var currentIndex = 0
@@ -37,6 +37,7 @@ class GameView(context: Context): SurfaceHolder.Callback, SurfaceView(context) {
     fun getLawerGame() = LawyerGame(this, context)
     fun getTargetGame() = TargetGame(this, context)
     fun getChickGame() = ChickGame(this, context)
+    fun getBilleGame() = BilleGame(this, context)
 
     override fun draw(canvas: Canvas) {
         super.draw(canvas)
@@ -78,6 +79,7 @@ class GameView(context: Context): SurfaceHolder.Callback, SurfaceView(context) {
             1 -> getDayNightGame()
             2 -> getLawerGame()
             3 -> getTargetGame()
+            4 -> getBilleGame()
             else -> getTargetGame()
         }
     }

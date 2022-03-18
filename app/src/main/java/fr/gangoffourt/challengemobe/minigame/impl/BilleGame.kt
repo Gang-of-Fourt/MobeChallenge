@@ -16,7 +16,7 @@ import fr.gangoffourt.challengemobe.minigame.AbstractMiniGame
 import org.xmlpull.v1.XmlSerializer
 
 
-class Bille(var gameView: GameView, context : Context) : AbstractMiniGame(gameView, context) {
+class BilleGame(var gameView: GameView, context : Context) : AbstractMiniGame(gameView, context) {
 
     var accelerometre : Sensor
     var sensorManager : SensorManager
