@@ -1,14 +1,11 @@
 package fr.gangoffourt.challengemobe.minigame.impl
 
-import android.R.attr.left
-import android.R.attr.right
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorManager
-import android.util.Log
 import android.view.MotionEvent
 import com.example.challengemobe.R
 import fr.gangoffourt.challengemobe.GameView
@@ -17,6 +14,7 @@ import kotlin.system.exitProcess
 
 
 class LawyerGame(private var gameView: GameView,private var context: Context): AbstractMiniGame(gameView, context) {
+
     private var sensorManager: SensorManager = context.getSystemService(Context.SENSOR_SERVICE) as SensorManager
     private var accelerometreSensor: Sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
     private var rotate = false
@@ -33,6 +31,7 @@ class LawyerGame(private var gameView: GameView,private var context: Context): A
             exitProcess(0)
         }
     }
+
     override fun draw(canvas: Canvas) {
         val imageBounds = canvas.getClipBounds()
 
@@ -94,7 +93,6 @@ class LawyerGame(private var gameView: GameView,private var context: Context): A
                     topMarteau.toInt()+ imageMarteau!!.intrinsicHeight
                 )
             }
-//            imageMarteau?.setBounds(200, canvas.height - 1600, canvas.width- 200, canvas.height - 600)
         }
 
         if(emoji != null) {
@@ -116,6 +114,7 @@ class LawyerGame(private var gameView: GameView,private var context: Context): A
     override fun onTouchEvent(motionEvent: MotionEvent): Boolean {
         return true
     }
+
     fun changeMarteau(){
         if (!rotate) {
             gameView.solve()
@@ -137,13 +136,11 @@ class LawyerGame(private var gameView: GameView,private var context: Context): A
                 }
             }
         }
-
-
-
     }
 
     override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
     }
+
     fun onResume(){
         sensorManager.registerListener(this, accelerometreSensor, SensorManager.SENSOR_DELAY_NORMAL)
     }

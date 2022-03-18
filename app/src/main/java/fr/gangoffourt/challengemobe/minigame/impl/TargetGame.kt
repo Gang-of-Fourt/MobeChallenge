@@ -18,7 +18,7 @@ class TargetGame(private var gameView: GameView, private var context: Context): 
     var heightScreen = 0
     var widthScreen = 0
     var cercles : MutableList<Circle> = mutableListOf()
-    var SIZE_TARGET = 150f
+    var SIZE_TARGET = 75f
     private var night = false
     var imageTemps =  context.getDrawable(R.drawable.timeday)
     var bigInHold = 0L
@@ -27,17 +27,17 @@ class TargetGame(private var gameView: GameView, private var context: Context): 
     var cleFind = false
     val paint = Paint()
 
-
-
     init{
         paint.textSize = 90F
     }
+
     fun initialisationCercle(){
-        cercles.add( Circle("c0", 300f, heightScreen/4f, Color.RED))
+        cercles.add(Circle("c0", 300f, heightScreen/4f, Color.RED))
         cercles.add(Circle("c1", widthScreen-300f, heightScreen / 8f, Color.BLUE))
-        cercles.add( Circle("c2", widthScreen-600f, heightScreen / 2f, Color.GREEN))
-        cercles.add( Circle("c3",widthScreen / 2f, heightScreen - 300f, Color.YELLOW))
+        cercles.add(Circle("c2", widthScreen-600f, heightScreen / 2f, Color.GREEN))
+        cercles.add(Circle("c3",widthScreen / 2f, heightScreen - 300f, Color.YELLOW))
     }
+
     override fun draw(canvas: Canvas) {
         if(heightScreen == 0 && widthScreen == 0){
             heightScreen = canvas.height
@@ -45,17 +45,18 @@ class TargetGame(private var gameView: GameView, private var context: Context): 
             initialisationCercle()
         }
 
-        cle?.setBounds(widthScreen-400, heightScreen / 8 - 50, widthScreen-250, heightScreen / 8+100 )
+        cle?.setBounds(
+            widthScreen - 300 - SIZE_TARGET.toInt(),
+            heightScreen / 8 - SIZE_TARGET.toInt(),
+            widthScreen - 300 + SIZE_TARGET.toInt(),
+            heightScreen / 8 + SIZE_TARGET.toInt()
+        )
         cle?.draw(canvas)
 
-        if (cleFind) canvas.drawText("Bravo", 200f,300f, paint )
+        if (cleFind) canvas.drawText("Bravo", 150f,100f, paint )
         for (elem in cercles){
-            Log.d("TEST", cercles.toString())
             canvas.drawCircle(elem.x, elem.y, SIZE_TARGET, elem.paint)
         }
-
-
-
     }
 
     override fun onTouchEvent(motionEvent: MotionEvent): Boolean {
