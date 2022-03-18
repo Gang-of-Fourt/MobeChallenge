@@ -128,10 +128,10 @@ class LawyerGame(private var gameView: GameView,private var context: Context): A
     override fun onSensorChanged(event: SensorEvent) {
         when(event.sensor?.type){
             Sensor.TYPE_ACCELEROMETER -> {
-                if (event.values[0] < -6 && event.values[1] < 6) {
+                if (event.values[0] < -6 && event.values[1] < 4) {
                     changeMarteau()
                 }
-                if (event.values[0] > 5 && event.values[1] < 6) {
+                if (event.values[0] > 6 && event.values[1] < 4) {
                     changeMarteau()
                 }
             }
