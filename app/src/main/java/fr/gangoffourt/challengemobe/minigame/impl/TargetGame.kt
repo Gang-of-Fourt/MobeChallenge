@@ -36,11 +36,12 @@ class TargetGame(private var gameView: GameView, private var context: Context): 
     var delta = 150
     var cle =  context.getDrawable(R.drawable.cle)
     var cleFind = false
+    val paint = Paint()
+
+
 
     init{
-
-
-
+        paint.textSize = 90F
     }
     fun initialisationCercle(){
         cercles.add( Circle("c0", 300f, heightScreen/4f, Color.RED))
@@ -55,10 +56,10 @@ class TargetGame(private var gameView: GameView, private var context: Context): 
             initialisationCercle()
         }
 
-        cle?.setBounds(widthScreen-400, heightScreen / 8 - 50, widthScreen-400 + 150, heightScreen / 8+100 )
+        cle?.setBounds(widthScreen-400, heightScreen / 8 - 50, widthScreen-250, heightScreen / 8+100 )
         cle?.draw(canvas)
 
-        if (end) canvas.drawColor(Color.RED)
+        if (cleFind) canvas.drawText("Bravo", 200f,300f, paint )
         for (elem in cercles){
             Log.d("TEST", cercles.toString())
             canvas.drawCircle(elem.x, elem.y, SIZE_TARGET, elem.paint)
@@ -87,23 +88,19 @@ class TargetGame(private var gameView: GameView, private var context: Context): 
     }
     fun moovePiece(x:Float, y: Float){
         for (target in cercles){
-                if(x >= target.x-SIZE_TARGET && x <= target.x + SIZE_TARGET && y >= target.y-SIZE_TARGET && y <= target.y+ SIZE_TARGET){
-                    target.x = x
-                    target.y = y
-                    if (target.nom == "c1"){
-                        cleFind = true
-                    }
+            if(x >= target.x-SIZE_TARGET && x <= target.x + SIZE_TARGET && y >= target.y-SIZE_TARGET && y <= target.y+ SIZE_TARGET){
+                target.x = x
+                target.y = y
+                if (target.nom == "c1" && ((x < widthScreen-400 || x > widthScreen-250) || (y < heightScreen / 8 - 50 || y > heightScreen / 8 + 100))){
+                    cleFind = true
+                    gameView.solve()
                 }
             }
         }
+    }
 
     fun checkClick(x:Float, y: Float){
-        if (cleFind) {
-            if (x >= widthScreen - 400 && x <= widthScreen - 400 + 150 && y >= heightScreen / 8 - 50 && y <= heightScreen / 8 + 100) {
-                end = true
-                gameView.solve()
-            }
-        }
+
 
         for (target in cercles){
             if(x >= target.x-SIZE_TARGET && x <= target.x + SIZE_TARGET && y >= target.y-SIZE_TARGET && y <= target.y+ SIZE_TARGET){
