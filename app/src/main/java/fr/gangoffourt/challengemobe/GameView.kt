@@ -3,9 +3,12 @@ package fr.gangoffourt.challengemobe
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
+import android.util.Log
+import android.view.MotionEvent
 import android.view.SurfaceHolder
 import android.view.SurfaceView
 import fr.gangoffourt.challengemobe.minigame.AbstractMiniGame
+import fr.gangoffourt.challengemobe.minigame.impl.ChickGame
 import fr.gangoffourt.challengemobe.minigame.impl.TestGame
 import fr.gangoffourt.challengemobe.thread.ThreadGameDraw
 import fr.gangoffourt.challengemobe.thread.ThreadUpdateView
@@ -19,7 +22,7 @@ class GameView(context: Context): SurfaceHolder.Callback, SurfaceView(context) {
 
     init{
         holder.addCallback(this)
-        miniGameList.add(TestGame(this, context))
+        miniGameList.add(ChickGame(this, context))
     }
 
     fun update() {
@@ -42,8 +45,12 @@ class GameView(context: Context): SurfaceHolder.Callback, SurfaceView(context) {
     override fun surfaceChanged(p0: SurfaceHolder, p1: Int, p2: Int, p3: Int) {
     }
 
+    override fun onTouchEvent(motionEvent: MotionEvent): Boolean {
+        return miniGameList[miniGameList.size-1].onTouchEvent(motionEvent)
+    }
+
     fun solve () {
-        //TODO résolution d'un minijeu
+        Log.d("TEST", "solved !")
     }
 
     override fun surfaceDestroyed(p0: SurfaceHolder) {
