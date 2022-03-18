@@ -1,8 +1,8 @@
-package com.example.challengemobe.thread
+package fr.gangoffourt.challengemobe.thread
 
 import android.graphics.Canvas
 import android.view.SurfaceHolder
-import com.example.challengemobe.GameView
+import fr.gangoffourt.challengemobe.GameView
 import java.lang.Exception
 
 class ThreadGameDraw(var surfaceHolder: SurfaceHolder, var gameView: GameView) : Thread() {
