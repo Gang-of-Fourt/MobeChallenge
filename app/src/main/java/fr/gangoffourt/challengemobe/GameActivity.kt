@@ -6,9 +6,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class GameActivity : AppCompatActivity() {
-    lateinit var gameView: GameView
-    lateinit var sensorEvent: SensorEvent
 
+    lateinit var gameView: GameView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,13 +15,7 @@ class GameActivity : AppCompatActivity() {
         ViewCompat.getWindowInsetsController(window.decorView)?.hide(WindowInsetsCompat.Type.systemBars())
 
         gameView = GameView(this)
-        sensorEvent = SensorEvent(this, gameView)
 
         setContentView(gameView)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        sensorEvent.onResume()
     }
 }
