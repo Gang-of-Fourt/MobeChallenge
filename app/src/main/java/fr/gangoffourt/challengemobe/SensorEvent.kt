@@ -1,4 +1,4 @@
-package com.example.challengemobe
+package fr.gangoffourt.challengemobe
 
 import android.content.Context
 import android.hardware.Sensor

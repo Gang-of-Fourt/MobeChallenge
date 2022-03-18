@@ -1,4 +1,4 @@
-package com.example.challengemobe
+package fr.gangoffourt.challengemobe
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

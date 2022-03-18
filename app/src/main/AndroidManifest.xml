@@ -12,13 +12,13 @@
         android:theme="@style/Theme.ChallengeMOBE">
 
         <activity
-            android:name=".GameActivity"
+            android:name="fr.gangoffourt.challengemobe.GameActivity"
             android:exported="true">
 
         </activity>
 
         <activity
-            android:name=".AccueilActivity"
+            android:name="fr.gangoffourt.challengemobe.AccueilActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

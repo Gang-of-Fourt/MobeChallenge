@@ -1,12 +1,12 @@
-package com.example.challengemobe
+package fr.gangoffourt.challengemobe
 
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
 import android.view.SurfaceHolder
 import android.view.SurfaceView
-import com.example.challengemobe.thread.ThreadGameDraw
-import com.example.challengemobe.thread.ThreadUpdateView
+import fr.gangoffourt.challengemobe.thread.ThreadGameDraw
+import fr.gangoffourt.challengemobe.thread.ThreadUpdateView
 import java.lang.Exception
 
 class GameView(context: Context): SurfaceHolder.Callback, SurfaceView(context) {
@@ -34,6 +34,10 @@ class GameView(context: Context): SurfaceHolder.Callback, SurfaceView(context) {
     }
 
     override fun surfaceChanged(p0: SurfaceHolder, p1: Int, p2: Int, p3: Int) {
+    }
+
+    fun solve () {
+        //TODO résolution d'un minijeu
     }
 
     override fun surfaceDestroyed(p0: SurfaceHolder) {
