@@ -11,18 +11,7 @@ import android.view.MotionEvent
 import com.example.challengemobe.R
 import fr.gangoffourt.challengemobe.GameView
 import fr.gangoffourt.challengemobe.minigame.AbstractMiniGame
-
-
-class Circle(var nom : String, var x: Float, var y: Float, var color: Int){
-    val paint = Paint()
-    init {
-        setPaint()
-    }
-    fun setPaint(){
-        paint.color = color
-        paint.textSize = 70F
-    }
-}
+import fr.gangoffourt.challengemobe.minigame.data.Circle
 
 class TargetGame(private var gameView: GameView, private var context: Context): AbstractMiniGame(gameView, context) {
     var end = false
