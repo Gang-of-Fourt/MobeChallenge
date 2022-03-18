@@ -10,14 +10,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ChallengeMOBE">
-
+        <activity
+            android:name="fr.gangoffourt.challengemobe.ScoreBoardActivity"
+            android:exported="false" />
         <activity
             android:name="fr.gangoffourt.challengemobe.GameActivity"
             android:exported="true"
-            android:screenOrientation="portrait">
-
-        </activity>
-
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name="fr.gangoffourt.challengemobe.AccueilActivity"
             android:exported="true">
