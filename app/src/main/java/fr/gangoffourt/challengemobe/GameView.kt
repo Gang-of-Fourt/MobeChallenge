@@ -6,7 +6,7 @@ import android.graphics.Color
 import android.view.SurfaceHolder
 import android.view.SurfaceView
 import fr.gangoffourt.challengemobe.minigame.AbstractMiniGame
-import fr.gangoffourt.challengemobe.minigame.impl.TestGame
+import fr.gangoffourt.challengemobe.minigame.impl.Bille
 import fr.gangoffourt.challengemobe.thread.ThreadGameDraw
 import fr.gangoffourt.challengemobe.thread.ThreadUpdateView
 import java.lang.Exception
@@ -19,7 +19,7 @@ class GameView(context: Context): SurfaceHolder.Callback, SurfaceView(context) {
 
     init{
         holder.addCallback(this)
-        miniGameList.add(TestGame(this, context))
+        miniGameList.add(Bille( this, context))
     }
 
     fun update() {

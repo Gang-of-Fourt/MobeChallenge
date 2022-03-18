@@ -17,7 +17,7 @@ class ThreadUpdateView(var surfaceHolder: SurfaceHolder, var gameView: GameView)
         var canvas: Canvas? = null
 
         try {
-            canvas = surfaceHolder.lockCanvas()
+//            canvas = surfaceHolder.lockCanvas()
             synchronized(surfaceHolder){
                 gameView.update()
             }
