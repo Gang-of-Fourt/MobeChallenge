@@ -10,7 +10,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.example.challengemobe"
+        applicationId "fr.gangoffourt.challengemobe"
         minSdk 27
         targetSdk 32
         versionCode 1

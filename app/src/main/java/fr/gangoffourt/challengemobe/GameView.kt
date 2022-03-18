@@ -19,7 +19,7 @@ class GameView(context: Context): SurfaceHolder.Callback, SurfaceView(context) {
 
     init{
         holder.addCallback(this)
-        miniGameList.add(TestGame(this))
+        miniGameList.add(TestGame(this, context))
     }
 
     fun update() {
