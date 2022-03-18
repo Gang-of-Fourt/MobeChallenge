@@ -13,7 +13,8 @@
 
         <activity
             android:name="fr.gangoffourt.challengemobe.GameActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
 
         </activity>
 

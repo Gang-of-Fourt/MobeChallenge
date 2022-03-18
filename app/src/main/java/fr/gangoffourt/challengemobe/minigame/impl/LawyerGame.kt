@@ -117,10 +117,13 @@ class LawyerGame(private var gameView: GameView,private var context: Context): A
         return true
     }
     fun changeMarteau(){
+        if (!rotate) {
+            gameView.solve()
+        }
         rotate = true
         imageMarteau =  context.getDrawable(R.drawable.marteau_rotate)
         emoji = context.getDrawable(R.drawable.happy)
-        gameView.solve()
+
     }
 
     override fun onSensorChanged(event: SensorEvent) {
