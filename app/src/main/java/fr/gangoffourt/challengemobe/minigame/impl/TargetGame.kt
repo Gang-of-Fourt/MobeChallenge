@@ -67,7 +67,7 @@ class TargetGame(private var gameView: GameView, private var context: Context): 
             }
             MotionEvent.ACTION_MOVE -> {
                 if (System.currentTimeMillis() - bigInHold > 500)
-                    moovePiece(motionEvent.x, motionEvent.y)
+                    movePiece(motionEvent.x, motionEvent.y)
             }
             MotionEvent.ACTION_UP -> {
                 delta = 150
@@ -75,14 +75,16 @@ class TargetGame(private var gameView: GameView, private var context: Context): 
         }
         return true
     }
-    fun moovePiece(x:Float, y: Float){
+    private fun movePiece(x:Float, y: Float){
         for (target in cercles){
             if(x >= target.x-SIZE_TARGET && x <= target.x + SIZE_TARGET && y >= target.y-SIZE_TARGET && y <= target.y+ SIZE_TARGET){
                 target.x = x
                 target.y = y
                 if (target.nom == "c1" && ((x < widthScreen-400 || x > widthScreen-250) || (y < heightScreen / 8 - 50 || y > heightScreen / 8 + 100))){
+                    if (!cleFind) {
+                        gameView.solve()
+                    }
                     cleFind = true
-                    gameView.solve()
                 }
             }
         }

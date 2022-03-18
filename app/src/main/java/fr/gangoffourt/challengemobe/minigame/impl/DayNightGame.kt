@@ -39,9 +39,12 @@ class DayNightGame(private var gameView: GameView, private var context: Context)
         return true
     }
     fun changeTime(){
+        if (!night) {
+            gameView.solve()
+        }
         night = true
         imageTemps =  context.getDrawable(R.drawable.timenight)
-        gameView.solve()
+
     }
 
     override fun onSensorChanged(event: SensorEvent) {
