@@ -9,6 +9,7 @@ import android.view.SurfaceHolder
 import android.view.SurfaceView
 import fr.gangoffourt.challengemobe.minigame.AbstractMiniGame
 import fr.gangoffourt.challengemobe.minigame.impl.ChickGame
+import fr.gangoffourt.challengemobe.minigame.impl.CowGame
 import fr.gangoffourt.challengemobe.minigame.impl.TestGame
 import fr.gangoffourt.challengemobe.thread.ThreadGameDraw
 import fr.gangoffourt.challengemobe.thread.ThreadUpdateView
@@ -22,7 +23,7 @@ class GameView(context: Context): SurfaceHolder.Callback, SurfaceView(context) {
 
     init{
         holder.addCallback(this)
-        miniGameList.add(ChickGame(this, context))
+        miniGameList.add(CowGame(this, context))
     }
 
     fun update() {
