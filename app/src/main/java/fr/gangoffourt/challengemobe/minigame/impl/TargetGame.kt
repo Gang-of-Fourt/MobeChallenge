@@ -25,7 +25,7 @@ class Circle(var nom : String, var x: Float, var y: Float, var color: Int){
 }
 
 class TargetGame(private var gameView: GameView, private var context: Context): AbstractMiniGame(gameView, context) {
-
+    var end = false
     var heightScreen = 0
     var widthScreen = 0
     var cercles : MutableList<Circle> = mutableListOf()
@@ -58,6 +58,7 @@ class TargetGame(private var gameView: GameView, private var context: Context): 
         cle?.setBounds(widthScreen-400, heightScreen / 8 - 50, widthScreen-400 + 150, heightScreen / 8+100 )
         cle?.draw(canvas)
 
+        if (end) canvas.drawColor(Color.RED)
         for (elem in cercles){
             Log.d("TEST", cercles.toString())
             canvas.drawCircle(elem.x, elem.y, SIZE_TARGET, elem.paint)
@@ -98,7 +99,8 @@ class TargetGame(private var gameView: GameView, private var context: Context): 
 
     fun checkClick(x:Float, y: Float){
         if (cleFind) {
-            if (x >= widthScreen - 400 && x <= widthScreen - 400 + 150 && y >= heightScreen / 8 - 50 && y >= heightScreen / 8 + 100) {
+            if (x >= widthScreen - 400 && x <= widthScreen - 400 + 150 && y >= heightScreen / 8 - 50 && y <= heightScreen / 8 + 100) {
+                end = true
                 gameView.solve()
             }
         }
