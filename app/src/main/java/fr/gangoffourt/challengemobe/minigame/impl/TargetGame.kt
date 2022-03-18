@@ -76,6 +76,10 @@ class TargetGame(private var gameView: GameView, private var context: Context): 
         }
         return true
     }
+
+    override fun stop() {
+    }
+
     private fun movePiece(x:Float, y: Float){
         for (target in cercles){
             if(x >= target.x-SIZE_TARGET && x <= target.x + SIZE_TARGET && y >= target.y-SIZE_TARGET && y <= target.y+ SIZE_TARGET){
@@ -106,6 +110,10 @@ class TargetGame(private var gameView: GameView, private var context: Context): 
     }
 
     override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
+    }
+
+    override fun toString(): String {
+        return "TargetGame()"
     }
 
 

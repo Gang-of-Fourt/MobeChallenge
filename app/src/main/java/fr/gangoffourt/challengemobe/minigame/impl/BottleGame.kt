@@ -57,6 +57,10 @@ class BottleGame(private var gameView: GameView, private var context: Context): 
         return true
     }
 
+    override fun stop() {
+        sensorManager.unregisterListener(this)
+    }
+
     private var test = 0
     private var  bigInHold = System.currentTimeMillis()
 
@@ -93,6 +97,10 @@ class BottleGame(private var gameView: GameView, private var context: Context): 
     }
     fun onResume(){
         sensorManager.registerListener(this, accelerometreSensor, SensorManager.SENSOR_DELAY_NORMAL)
+    }
+
+    override fun toString(): String {
+        return "BottleGame()"
     }
 
 }

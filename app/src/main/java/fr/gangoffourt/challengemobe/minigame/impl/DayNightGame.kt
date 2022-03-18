@@ -38,6 +38,11 @@ class DayNightGame(private var gameView: GameView, private var context: Context)
     override fun onTouchEvent(motionEvent: MotionEvent): Boolean {
         return true
     }
+
+    override fun stop() {
+        sensorManager.unregisterListener(this)
+    }
+
     fun changeTime(){
         if (!night) {
             gameView.solve()
@@ -67,6 +72,10 @@ class DayNightGame(private var gameView: GameView, private var context: Context)
     }
     fun onResume(){
         sensorManager.registerListener(this, luminositySensor, SensorManager.SENSOR_DELAY_NORMAL)
+    }
+
+    override fun toString(): String {
+        return "DayNightGame()"
     }
 
 }

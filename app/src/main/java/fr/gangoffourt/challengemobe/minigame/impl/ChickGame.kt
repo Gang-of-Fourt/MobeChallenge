@@ -102,6 +102,9 @@ class ChickGame(private val gameView: GameView, private val context : Context) :
         return true
     }
 
+    override fun stop() {
+    }
+
     private fun checkTouchBoundingBox(x: Float, y: Float, boundingBox: Rect): Boolean {
         var isInBoundingBox = false
         if(x >= boundingBox.left && x <= boundingBox.right && y >= boundingBox.top && y <= boundingBox.bottom){
@@ -116,6 +119,10 @@ class ChickGame(private val gameView: GameView, private val context : Context) :
 
     override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
         throw NotImplementedError()
+    }
+
+    override fun toString(): String {
+        return "ChickGame()"
     }
 
 }

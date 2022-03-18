@@ -10,4 +10,6 @@ import fr.gangoffourt.challengemobe.GameView
 abstract class AbstractMiniGame(gameView: GameView, context : Context) : SensorEventListener {
     abstract fun draw (canvas : Canvas)
     abstract fun onTouchEvent(motionEvent: MotionEvent): Boolean
+    abstract fun stop()
+
 }

@@ -143,6 +143,8 @@ class CowGame (private val gameView: GameView, context: Context) : AbstractMiniG
         return true
     }
 
+    override fun stop() {
+    }
 
 
     private fun checkClickInBB(x:Float, y:Float, boundingBox: Rect) : Boolean {
@@ -159,6 +161,10 @@ class CowGame (private val gameView: GameView, context: Context) : AbstractMiniG
 
     override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
         TODO("Not yet implemented")
+    }
+
+    override fun toString(): String {
+        return "CowGame()"
     }
 
 }

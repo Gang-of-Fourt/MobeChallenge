@@ -24,7 +24,7 @@ class LawyerGame(private var gameView: GameView,private var context: Context): A
     val paint = Paint()
 
     init {
-        onResume()
+        init()
         paint.textSize = 70F
         if (sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER) == null){
             print("Capteur de luminosité non présent sur le device")
@@ -115,7 +115,12 @@ class LawyerGame(private var gameView: GameView,private var context: Context): A
         return true
     }
 
+    override fun stop() {
+        sensorManager.unregisterListener(this)
+    }
+
     fun changeMarteau(){
+
         if (!rotate) {
             gameView.solve()
         }
@@ -141,8 +146,12 @@ class LawyerGame(private var gameView: GameView,private var context: Context): A
     override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
     }
 
-    fun onResume(){
+    fun init(){
         sensorManager.registerListener(this, accelerometreSensor, SensorManager.SENSOR_DELAY_NORMAL)
+    }
+
+    override fun toString(): String {
+        return "LawyerGame()"
     }
 
 }

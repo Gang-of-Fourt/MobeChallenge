@@ -145,6 +145,7 @@ class BilleGame(var gameView: GameView, context : Context) : AbstractMiniGame(ga
         return isInBoundingBox
     }
 
+    var billeTouched = false
 
     override fun draw(canvas: Canvas) {
         if (!isBilleTouchCircle(canvas)){
@@ -154,18 +155,25 @@ class BilleGame(var gameView: GameView, context : Context) : AbstractMiniGame(ga
             obstacle3.draw(canvas)
             endCircle.draw(canvas)
         } else {
+            if (!billeTouched) {
+                gameView.solve()
+                billeTouched = true
+            }
             val paint = Paint(Color.BLACK)
             paint.textSize = 70F
             paint.textAlign = Paint.Align.CENTER
             canvas.drawText("Mais INCROYAAAAAAABLE!", canvas.width/2F, canvas.width/2F, paint)
-            gameView.solve()
         }
 
 
     }
 
     override fun onTouchEvent(motionEvent: MotionEvent): Boolean {
-        TODO("Not yet implemented")
+        return true
+    }
+
+    override fun stop() {
+        sensorManager.unregisterListener(this)
     }
 
 
