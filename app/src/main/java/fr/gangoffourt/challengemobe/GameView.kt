@@ -23,7 +23,7 @@ class GameView(context: Context): SurfaceHolder.Callback, SurfaceView(context) {
     }
 
     fun update() {
-        println("update")
+
     }
 
     override fun draw(canvas: Canvas) {
@@ -34,9 +34,9 @@ class GameView(context: Context): SurfaceHolder.Callback, SurfaceView(context) {
 
     override fun surfaceCreated(p0: SurfaceHolder) {
         threadGameDraw.setRunning(true)
-        threadUpdateView.setRunning(true)
+        //threadUpdateView.setRunning(true)
         threadGameDraw.start()
-        threadUpdateView.start()
+        //threadUpdateView.start()
     }
 
     override fun surfaceChanged(p0: SurfaceHolder, p1: Int, p2: Int, p3: Int) {
@@ -51,10 +51,10 @@ class GameView(context: Context): SurfaceHolder.Callback, SurfaceView(context) {
         while (retry){
             try{
                 threadGameDraw.setRunning(false)
-                threadUpdateView.setRunning(false)
+                //threadUpdateView.setRunning(false)
 
                 threadGameDraw.join()
-                threadUpdateView.join()
+                //threadUpdateView.join()
                 retry = false
             }
             catch (exception: Exception){
