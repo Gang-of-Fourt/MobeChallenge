@@ -134,7 +134,7 @@ class CowGame (private val gameView: GameView, context: Context) : AbstractMiniG
                     xMilk = motionEvent.x.toInt()
                     yMilk = motionEvent.y.toInt()
                     textToDisplay = "Oh non :("
-                    //TODO ajouter l'appel a failed
+                    gameView.fail()
                 }
                 holdingMilk = false
                 holdingWater = false
