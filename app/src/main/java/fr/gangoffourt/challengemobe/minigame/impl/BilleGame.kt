@@ -162,7 +162,7 @@ class BilleGame(var gameView: GameView, context : Context) : AbstractMiniGame(ga
             val paint = Paint(Color.BLACK)
             paint.textSize = 70F
             paint.textAlign = Paint.Align.CENTER
-            canvas.drawText("Mais INCROYAAAAAAABLE!", canvas.width/2F, canvas.width/2F, paint)
+            canvas.drawText("Mais INCROYAABLE!", canvas.width/2F, canvas.width/2F, paint)
         }
 
 

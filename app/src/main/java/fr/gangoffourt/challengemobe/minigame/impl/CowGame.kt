@@ -31,8 +31,8 @@ class CowGame (private val gameView: GameView, context: Context) : AbstractMiniG
     }
 
     override fun draw(canvas: Canvas) {
-        canvas.drawColor(Color.BLACK)
-        paint.color = Color.WHITE
+        canvas.drawColor(Color.WHITE)
+        paint.color = Color.BLACK
         val canvasBounds = canvas.clipBounds
         var left = canvasBounds.width()
         left /= 2
