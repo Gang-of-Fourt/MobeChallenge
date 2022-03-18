@@ -16,7 +16,10 @@ class ThreadGameDraw(var surfaceHolder: SurfaceHolder, var gameView: GameView) :
         var canvas: Canvas? = null
 
         try {
-            canvas = surfaceHolder.lockCanvas();
+            canvas = surfaceHolder.lockCanvas()
+            if (canvas == null) {
+                return
+            }
             synchronized(surfaceHolder){
                 gameView.draw(canvas)
             }
