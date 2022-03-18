@@ -12,7 +12,6 @@ class ThreadUpdateView(var surfaceHolder: SurfaceHolder, var gameView: GameView)
         running = isRunning;
     }
 
-    fun getDuration() = 250F
     override fun run() {
         var canvas: Canvas? = null
 
@@ -36,6 +35,6 @@ class ThreadUpdateView(var surfaceHolder: SurfaceHolder, var gameView: GameView)
 
             }
         }
-        gameView.handler.postDelayed(this, this.getDuration().toLong())
+        gameView.handler.postDelayed(this, 1000)
     }
 }
