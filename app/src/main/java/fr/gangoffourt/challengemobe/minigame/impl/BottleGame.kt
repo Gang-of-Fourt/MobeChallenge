@@ -19,7 +19,7 @@ import kotlin.system.exitProcess
 class BottleGame(private var gameView: GameView, private var context: Context): AbstractMiniGame(gameView, context) {
     private var sensorManager: SensorManager = context.getSystemService(Context.SENSOR_SERVICE) as SensorManager
     private var accelerometreSensor: Sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
-    private var rotate = false
+    private var win = false
     var imageBouteille =  context.getDrawable(R.drawable.bouteille_2)
 
     val paint = Paint()
@@ -39,6 +39,10 @@ class BottleGame(private var gameView: GameView, private var context: Context): 
         left /= 2
         var top = canvasBounds.height()
         top /= 2
+        if(!win)
+            canvas.drawText("Videz la bouteille", left/2f, 100f, paint)
+        else
+            canvas.drawText("Merci!", left - 10f, 100f, paint)
 
         if (imageBouteille != null) {
             left -= imageBouteille!!.intrinsicWidth.div(2)
@@ -66,9 +70,16 @@ class BottleGame(private var gameView: GameView, private var context: Context): 
                     }
                     if (System.currentTimeMillis() - bigInHold > 500)
                         imageBouteille =  context.getDrawable(R.drawable.bouteille_1)
-                    if (System.currentTimeMillis() - bigInHold > 1500)
+                    if (System.currentTimeMillis() - bigInHold > 1000)
                         imageBouteille =  context.getDrawable(R.drawable.bouteille_0)
-                        gameView.solve()
+                    if (System.currentTimeMillis() - bigInHold > 1500){
+                        imageBouteille =  context.getDrawable(R.drawable.bouteille)
+                        if (!win)
+                            gameView.solve()
+                        win = true
+                    }
+
+
                 }
 
             }
