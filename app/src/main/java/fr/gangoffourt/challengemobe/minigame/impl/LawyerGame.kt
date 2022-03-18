@@ -34,19 +34,82 @@ class LawyerGame(private var gameView: GameView,private var context: Context): A
         }
     }
     override fun draw(canvas: Canvas) {
-        socleMarteau?.setBounds(100, canvas.height - 1000, canvas.width - 500, canvas.height - 800)
-        socleMarteau?.draw(canvas)
+        val imageBounds = canvas.getClipBounds()
+
+        var leftSocle: Float = imageBounds.width().toFloat()
+        leftSocle /= 4
+        var topSocle: Float = imageBounds.height().toFloat()
+        topSocle /= 2
+
+        var leftMarteau: Float = imageBounds.width().toFloat()
+        leftMarteau /= 2
+        var topMarteau: Float = imageBounds.height().toFloat()
+        topMarteau /= 2.5F
+
+        var leftEmoji: Float = imageBounds.width().toFloat()
+        leftEmoji /= 2
+        var topEmoji: Float = imageBounds.height().toFloat()
+        topEmoji /= 2F
+
+        if(socleMarteau != null) {
+            topSocle -= (socleMarteau.intrinsicHeight.div(2))
+            leftSocle -= (socleMarteau.intrinsicWidth.div(2))
+
+            socleMarteau?.setBounds(
+                leftSocle.toInt(),
+                topSocle.toInt(),
+                leftSocle.toInt()+socleMarteau.intrinsicWidth,
+                topSocle.toInt()+socleMarteau.intrinsicHeight)
+            socleMarteau?.draw(canvas)
+        }
+
         if (!rotate){
-            imageMarteau?.setBounds(300, canvas.height - 1500, canvas.width- 100, canvas.height - 600)
+            if(imageMarteau != null) {
+
+                topMarteau -= (imageMarteau!!.intrinsicHeight.div(2))
+                leftMarteau -= (imageMarteau!!.intrinsicWidth.div(2))
+
+                imageMarteau?.setBounds(
+                    leftMarteau.toInt(),
+                    topMarteau.toInt(),
+                    leftMarteau.toInt()+ imageMarteau!!.intrinsicWidth,
+                    topMarteau.toInt()+ imageMarteau!!.intrinsicHeight
+                )
+            }
+
             canvas.drawText("Innoncenter bob", 200f,canvas.height - 300f, paint )
 
         }
         else {
             canvas.drawText("Innocenté !", 250f,canvas.height - 300f, paint )
-            imageMarteau?.setBounds(200, canvas.height - 1600, canvas.width- 200, canvas.height - 600)
+            if(imageMarteau != null) {
+
+                topMarteau -= (imageMarteau!!.intrinsicHeight.div(2))
+                leftMarteau -= (imageMarteau!!.intrinsicWidth.div(1.5F))
+
+                imageMarteau?.setBounds(
+                    leftMarteau.toInt(),
+                    topMarteau.toInt(),
+                    leftMarteau.toInt()+ imageMarteau!!.intrinsicWidth,
+                    topMarteau.toInt()+ imageMarteau!!.intrinsicHeight
+                )
+            }
+//            imageMarteau?.setBounds(200, canvas.height - 1600, canvas.width- 200, canvas.height - 600)
         }
-        emoji?.setBounds(500, 300, 800, 600)
-        emoji?.draw(canvas)
+
+        if(emoji != null) {
+            topEmoji -= (emoji!!.intrinsicHeight.div(1.3F))
+            leftEmoji -= (emoji!!.intrinsicWidth.div(2))
+
+            emoji?.setBounds(
+                leftEmoji.toInt(),
+                topEmoji.toInt(),
+                leftEmoji.toInt()+ emoji!!.intrinsicWidth/4,
+                topEmoji.toInt()+ emoji!!.intrinsicHeight/4
+            )
+            emoji?.draw(canvas)
+        }
+
         imageMarteau?.draw(canvas)
     }
 
